@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bv10 <bv10@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 14:25:52 by bavarmaz          #+#    #+#             */
-/*   Updated: 2024/10/23 16:51:01 by bv10             ###   ########.fr       */
+/*   Created: 2024/10/24 13:56:18 by bv10              #+#    #+#             */
+/*   Updated: 2024/10/24 14:20:52 by bv10             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	if ((c <= 126 && c >= 32))
-		return (1);
-	return (0);
+	int		i;
+	int		a;
+
+	i = 0;
+	a = 0;
+	if (c == 0)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			a = i;
+		i++;
+	}
+	if (a == 0)
+		return (0);
+	return ((char *) str + a);
+}
+
+int main()
+{
+	char str[] = "baris varmaz";
+	printf("%s\n", ft_strrchr(str,'a'));
 }
