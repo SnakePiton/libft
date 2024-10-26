@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bv10 <bv10@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 00:22:04 by bv10              #+#    #+#             */
-/*   Updated: 2024/10/26 14:02:38 by bv10             ###   ########.fr       */
+/*   Created: 2024/10/26 14:03:22 by bv10              #+#    #+#             */
+/*   Updated: 2024/10/26 14:24:33 by bv10             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	sgn;
+	int	rtn;
 
 	i = 0;
-	j = 0;
-	if (!little[i])
-		return ((char *) big);
-	while (i < len && big[i])
+	sgn = 1;
+	rtn = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (big[i + j] == little[j])
-		{
-			j++;
-			if (!little[j])
-				return ((char *) big + i);
-		}
-		j = 0;
+		if (str[i] == '-')
+			sgn *= -1;
 		i++;
 	}
-	return (0);
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		rtn = rtn * 10 + (str[i] - 48);
+		i++;
+	}
+	return (rtn * sgn);
 }
