@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bv10 <bv10@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 21:01:47 by bv10              #+#    #+#             */
-/*   Updated: 2024/10/28 17:52:51 by bv10             ###   ########.fr       */
+/*   Created: 2024/10/28 15:01:54 by bv10              #+#    #+#             */
+/*   Updated: 2024/10/28 16:44:04 by bv10             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
-	int	i;
+	char	*s;
+	size_t	t;
+	size_t	max;
 
-	i = 0;
-	if (c == 0)
+	t = ft_strlen(str);
+	max = len;
+	if (!str)
 		return (0);
-	while (str[i])
-	{
-		if (str[i] == c)
-			return ((char *) str + i);
-		i++;
-	}
-	return (0);
+	if (start >= t || max == 0)
+		return (0);
+	if (max > t - start)
+		max = t - start;
+	s = (char *) malloc(sizeof(char) * (max + 1));
+	if (!s)
+		return (NULL);
+	ft_strlcpy(s, str + start, max + 1);
+	return (s);
 }
