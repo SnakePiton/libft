@@ -6,7 +6,7 @@
 /*   By: bv10 <bv10@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 00:22:04 by bv10              #+#    #+#             */
-/*   Updated: 2024/10/26 14:02:38 by bv10             ###   ########.fr       */
+/*   Updated: 2024/11/14 18:05:53 by bv10             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
-	if (!little[i])
+	if (little[i] == '\0')
 		return ((char *) big);
 	while (i < len && big[i])
 	{
